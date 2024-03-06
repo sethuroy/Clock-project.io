@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clocktime</title>
+    <link rel="stylesheet" href="clock-time.css">
+</head>
+<body>
+    
+    <div class="clock">
+        <span id="hrs">00</span>
+        <span>:</span>
+        <span id="mins">00</span>
+        <span>:</span>
+        <span id="secs">00</span>
+        <span></span>
+        <span id="am_pm">am</span>
+    </div>
+
+
+    <script>
+        function time(){
+            let clock = new Date();
+            let hr = clock.getHours();
+                let min = clock.getMinutes();
+                    let sec = clock.getSeconds();
+                        let am_pm = "AM";
+            if(hr >= 12){
+                if (hr > 12) hr -= 12
+                am_pm = "PM"
+            }else if(hr == 0){
+                hr = 12;
+                am_pm = "AM"
+            }
+            
+            let hours = document.querySelector("#hrs")
+            hours.innerHTML = hr
+
+            let minutes = document.querySelector("#mins")
+            if(min < 10){
+                min = "0" + min;
+            }
+            minutes.innerHTML = min
+            let seconds = document.querySelector("#secs")
+            if(sec < 10){
+                sec = "0" + sec;
+            }
+            seconds.innerHTML = sec
+            
+            let timeformat = document.querySelector("#am_pm")
+            timeformat.innerHTML = am_pm
+        }
+        setInterval(time,1000);
+    </script>
+</body>
+</html>
